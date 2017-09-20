@@ -13,7 +13,7 @@ if from_revision.nil? || to_revision.nil?
 end
 
 def jira_issue_from_commit_message(message)
-  message.sub(/^[^#].*/, '').sub(/^(#[^ ]) - .*/, '$1')
+  message.sub(/^[^#].*/, '').sub(/^#([^ ]+) .*/, '\1')
 end
 
 def issue_comment_body_from_commits(org_repo, commits)
