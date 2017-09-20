@@ -34,9 +34,9 @@ end
 
 
 options = {
-  :username     => ENV['JIRA_USER']
-  :password     => ENV['JIRA_PASSWORD']
-  :site         => ENV['JIRA_SITE']
+  :username     => ENV['JIRA_USER'],
+  :password     => ENV['JIRA_PASSWORD'],
+  :site         => ENV['JIRA_SITE'],
   :context_path => '',
   :auth_type    => :basic,
   :http_debug   => false
