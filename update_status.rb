@@ -25,7 +25,10 @@ end
 
 begin
   %x(git log #{from_revision}~1..#{to_revision} --pretty="format:%s %H").split("\n").group_by {|line| jira_issue_from_commit_message(line)}.each do |issue_key, commits|
-    next if issue_key.empty?
+    if issue_key.empty?
+      puts "Not updating Jira with #{commits.size} commit(s) since there is no issue number"
+      next
+    end
 
     message = "Commits:\n#{issue_comment_body_from_commits(org_repo, commits)}"
     command = message =~ /CLOSE/ ? 'close' : 'comment'
